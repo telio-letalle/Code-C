@@ -15,6 +15,26 @@ Noeud *add_debut(Noeud *nd, int valeur)
 	s1->valeur = valeur;
 	return (s1);
 }
+
+Noeud *add_fin(Noeud *nd, int valeur)
+{
+	Noeud *s1 = malloc(sizeof(struct Noeud));
+	if (nd == NULL)
+	{
+		s1->suivant = NULL;
+		s1->valeur = valeur;
+		return (s1);
+	}
+	Noeud *actuel = nd;
+	while (actuel->suivant != NULL)
+	{
+		actuel = actuel->suivant;
+	}
+	s1->valeur = valeur;
+	actuel->suivant = s1;
+	return (nd);
+}
+
 void view(Noeud *p)
 {
 	while (p)
@@ -31,5 +51,7 @@ int main(void)
 	s1 = add_debut(s1, 5);
 	s1 = add_debut(s1, 20);
 	s1 = add_debut(s1, 3);
+	s1 = add_fin(s1, 3);
 	view(s1);
+	return (0);
 }
